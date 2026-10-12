@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Join · Chocolate Lovers FCU{% endblock %}
+{% block content %}
+<section class="auth-layout register-layout">
+  <div class="welcome-panel">
+    <p class="eyebrow">Make yourself at home</p>
+    <h1>Good things<br>start here.</h1>
+    <p class="welcome-copy">Join a credit union that believes a little care goes a long way.</p>
+    <div class="welcome-stamp" aria-hidden="true"><span>YOUR<br>COMMUNITY</span><b>✳</b></div>
+    <p class="panel-footnote">Two new accounts, ready when you are.</p>
+  </div>
+  <div class="form-panel">
+    <div class="form-heading">
+      <p class="eyebrow">Become a member</p>
+      <h2>Let’s get started</h2>
+      <p>Create your secure member profile.</p>
+    </div>
+    <form method="post" action="{{ url_for('register') }}" class="auth-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" value="{{ email }}">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" required minlength="8" maxlength="32" pattern="(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9_]{8,32}" aria-describedby="username-help" value="{{ username }}">
+      <small id="username-help" class="field-help">8–32 characters, including one capital letter and one number.</small>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="new-password" required minlength="12" maxlength="1024" aria-describedby="password-help">
+      <small id="password-help" class="field-help">12 or more characters, with a capital, number, and special character.</small>
+      <button class="primary-button" type="submit">Create account <span aria-hidden="true">→</span></button>
+    </form>
+    <p class="switch-copy">Already a member? <a href="{{ url_for('login') }}">Sign in</a></p>
+  </div>
+</section>
+{% endblock %}

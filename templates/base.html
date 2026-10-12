@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{% block title %}Chocolate Lovers FCU{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="{{ url_for('index') }}" aria-label="Chocolate Lovers Federal Credit Union home">
+      <span class="mark" aria-hidden="true">CL</span>
+      <span>Chocolate Lovers <small>Federal Credit Union</small></span>
+    </a>
+    {% if session.get('user_id') %}
+      <form action="{{ url_for('logout') }}" method="post" class="logout-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="quiet-button" type="submit">Sign out</button>
+      </form>
+    {% else %}
+      <span class="secure-note"><span class="secure-dot"></span> Secure member access</span>
+    {% endif %}
+  </header>
+
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-stack" role="status" aria-live="polite">
+          {% for category, message in messages %}
+            <p class="flash flash-{{ category }}">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer"><span>Member-owned. Chocolate-inspired.</span><span>Member services · 1-800-555-0142</span></footer>
+</body>
+</html>

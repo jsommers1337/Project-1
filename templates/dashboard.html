@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Your accounts · Chocolate Lovers FCU{% endblock %}
+{% block content %}
+<section class="dashboard">
+  <div class="dashboard-heading">
+    <div>
+      <p class="eyebrow">Member dashboard</p>
+      <h1>Good to see you, {{ user['username'] }}.</h1>
+      <p class="dashboard-subtitle">Here’s your account snapshot.</p>
+    </div>
+    <div class="member-chip"><span class="member-avatar">{{ user['username'][0]|upper }}</span><span>Member since today</span></div>
+  </div>
+
+  <section class="accounts-section" aria-labelledby="accounts-title">
+    <div class="section-heading"><div><p class="eyebrow">Your money</p><h2 id="accounts-title">Accounts</h2></div><span class="account-count">{{ accounts|length }} accounts</span></div>
+    <div class="account-list">
+      {% for account in accounts %}
+      <article class="account-row">
+        <div class="account-icon" aria-hidden="true">{% if account['account_type'] == 'Checking' %}↗{% else %}◷{% endif %}</div>
+        <div class="account-name"><h3>{{ account['account_type'] }}</h3><p>•••• {{ account['account_number'][-4:] }}</p></div>
+        <div class="account-balance"><strong>$0.00</strong><span>Available balance</span></div>
+        <div class="account-details"><span>Routing number</span><strong>{{ account['routing_number'] }}</strong></div>
+        <div class="account-number"><span>Account number</span><strong>{{ account['account_number'] }}</strong></div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="profile-section" aria-labelledby="profile-title">
+    <div class="section-heading"><div><p class="eyebrow">Your details</p><h2 id="profile-title">Member information</h2></div></div>
+    <div class="profile-grid">
+      <div><span>Username</span><strong>{{ user['username'] }}</strong></div>
+      <div><span>Email address</span><strong>{{ user['email'] }}</strong></div>
+      <div><span>Financial institution</span><strong>{{ institution }}</strong></div>
+    </div>
+  </section>
+  <p class="demo-note">Demo account · Balances are illustrative and no transactions are available.</p>
+</section>
+{% endblock %}

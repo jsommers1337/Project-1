@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Sign in · Chocolate Lovers FCU{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="welcome-panel">
+    <p class="eyebrow">A sweeter way to bank</p>
+    <h1>Your money,<br>in good hands.</h1>
+    <p class="welcome-copy">A clear view of the accounts that keep your plans moving.</p>
+    <div class="welcome-stamp" aria-hidden="true"><span>MEMBER<br>OWNED</span><b>✳</b></div>
+    <p class="panel-footnote">Banking built around people, with a little more heart.</p>
+  </div>
+  <div class="form-panel">
+    <div class="form-heading">
+      <p class="eyebrow">Member portal</p>
+      <h2>Welcome back</h2>
+      <p>Sign in to see your accounts.</p>
+    </div>
+    <form method="post" action="{{ url_for('login') }}" class="auth-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" required maxlength="32" value="{{ username }}">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="1024">
+      <button class="primary-button" type="submit">Sign in <span aria-hidden="true">→</span></button>
+    </form>
+    <p class="switch-copy">New to Chocolate Lovers? <a href="{{ url_for('register') }}">Create an account</a></p>
+    <p class="form-security"><span aria-hidden="true">▣</span> Your sign-in is protected with secure storage.</p>
+  </div>
+</section>
+{% endblock %}

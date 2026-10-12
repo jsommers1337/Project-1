@@ -1,0 +1,156 @@
+:root {
+  --ink: #172b25;
+  --muted: #64746d;
+  --line: #dce5df;
+  --paper: #fbfcfa;
+  --white: #fff;
+  --forest: #174c3b;
+  --forest-deep: #10382f;
+  --mint: #d9f0df;
+  --lime: #c6e36c;
+  --coral: #df735c;
+  --danger-bg: #fff0ec;
+  --danger: #8c3425;
+  --success-bg: #e9f6eb;
+  --success: #245b38;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-size: 15px;
+}
+
+a { color: var(--forest); font-weight: 700; text-underline-offset: 3px; }
+
+.topbar {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  height: 76px;
+  justify-content: space-between;
+  padding: 0 max(5vw, calc((100vw - 1180px) / 2));
+}
+
+.wordmark { align-items: center; color: var(--ink); display: flex; gap: 11px; text-decoration: none; }
+.wordmark > span:last-child { font-size: 14px; font-weight: 700; letter-spacing: 0; }
+.wordmark small { color: var(--muted); display: block; font-size: 10px; font-weight: 500; margin-top: 3px; }
+.mark { align-items: center; background: var(--forest); border-radius: 50%; color: white; display: flex; font-family: Georgia, serif; font-size: 13px; height: 37px; justify-content: center; width: 37px; }
+.secure-note { align-items: center; color: var(--muted); display: flex; font-size: 12px; gap: 8px; }
+.secure-dot { background: #51a976; border-radius: 50%; height: 7px; width: 7px; }
+.quiet-button { background: transparent; border: 0; color: var(--forest); cursor: pointer; font: inherit; font-weight: 700; padding: 10px 0 10px 14px; }
+.quiet-button:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.flash-stack { margin: 20px auto 0; max-width: 1180px; padding: 0 24px; }
+.flash { border-radius: 4px; margin: 0; padding: 12px 16px; }
+.flash-error { background: var(--danger-bg); color: var(--danger); }
+.flash-success { background: var(--success-bg); color: var(--success); }
+
+.auth-layout { animation: appear 450ms ease-out both; display: grid; grid-template-columns: 1fr 1fr; margin: 56px auto 68px; max-width: 1060px; min-height: 590px; padding: 0 24px; }
+.welcome-panel { background: var(--forest-deep); color: white; display: flex; flex-direction: column; min-height: 590px; overflow: hidden; padding: 53px 56px 35px; position: relative; }
+.welcome-panel::before { border: 1px solid rgba(217, 240, 223, .18); border-radius: 50%; content: ""; height: 450px; position: absolute; right: -230px; top: 220px; width: 450px; }
+.welcome-panel::after { border: 1px solid rgba(217, 240, 223, .12); border-radius: 50%; content: ""; height: 580px; position: absolute; right: -295px; top: 155px; width: 580px; }
+.eyebrow { color: #668773; font-size: 10px; font-weight: 700; letter-spacing: 1.1px; margin: 0 0 12px; text-transform: uppercase; }
+.welcome-panel .eyebrow { color: var(--lime); }
+.welcome-panel h1, .dashboard-heading h1 { font-family: Georgia, "Times New Roman", serif; font-size: 45px; font-weight: 400; letter-spacing: 0; line-height: 1.12; margin: 0; }
+.welcome-copy { color: #d0dfd6; line-height: 1.7; margin: 20px 0 0; max-width: 305px; }
+.welcome-stamp { align-items: center; border: 1px solid rgba(217, 240, 223, .36); border-radius: 50%; color: var(--mint); display: flex; height: 138px; justify-content: center; margin: 49px 0 0 13px; position: relative; transform: rotate(-9deg); width: 138px; z-index: 1; }
+.welcome-stamp span { font-size: 9px; font-weight: 700; letter-spacing: 1.6px; line-height: 1.5; text-align: center; }
+.welcome-stamp b { color: var(--lime); font-size: 24px; position: absolute; right: 4px; top: 4px; }
+.panel-footnote { color: #bfd3c7; font-size: 12px; margin: auto 0 0; position: relative; z-index: 1; }
+.form-panel { align-self: stretch; background: var(--white); border: 1px solid var(--line); border-left: 0; display: flex; flex-direction: column; justify-content: center; padding: 54px 62px; }
+.form-heading { margin-bottom: 28px; }
+.form-heading h2, .section-heading h2 { font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: 400; letter-spacing: 0; margin: 0; }
+.form-heading > p:last-child { color: var(--muted); margin: 8px 0 0; }
+.auth-form { display: flex; flex-direction: column; }
+.auth-form label { font-size: 12px; font-weight: 700; margin: 0 0 7px; }
+.auth-form input { background: #fff; border: 1px solid #ccd8d0; border-radius: 3px; color: var(--ink); font: inherit; height: 45px; margin: 0 0 19px; padding: 0 12px; width: 100%; }
+.auth-form input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(23, 76, 59, .12); outline: 0; }
+.auth-form input:focus:invalid { border-color: var(--coral); }
+.field-help { color: var(--muted); font-size: 11px; line-height: 1.5; margin: -13px 0 16px; }
+.primary-button { align-items: center; background: var(--forest); border: 0; border-radius: 3px; color: white; cursor: pointer; display: flex; font: inherit; font-weight: 700; justify-content: space-between; margin-top: 5px; min-height: 48px; padding: 0 17px; transition: background 160ms ease, transform 160ms ease; }
+.primary-button span { color: var(--lime); font-size: 20px; }
+.primary-button:hover { background: #206047; transform: translateY(-1px); }
+.switch-copy { color: var(--muted); font-size: 12px; margin: 25px 0 0; }
+.form-security { border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; margin: 26px 0 0; padding-top: 18px; }
+.form-security span { color: var(--forest); margin-right: 5px; }
+.register-layout .welcome-stamp { margin-top: 35px; }
+.register-layout .form-panel { padding-bottom: 38px; padding-top: 38px; }
+.register-layout .form-heading { margin-bottom: 22px; }
+.register-layout .auth-form input { margin-bottom: 16px; }
+.register-layout .switch-copy { margin-top: 20px; }
+
+.dashboard { animation: appear 450ms ease-out both; margin: 54px auto 72px; max-width: 1120px; padding: 0 24px; }
+.dashboard-heading { align-items: flex-end; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding-bottom: 30px; }
+.dashboard-heading h1 { font-size: 38px; }
+.dashboard-subtitle { color: var(--muted); margin: 10px 0 0; }
+.member-chip { align-items: center; color: var(--muted); display: flex; font-size: 11px; gap: 10px; }
+.member-avatar { align-items: center; background: var(--mint); border-radius: 50%; color: var(--forest); display: flex; font-family: Georgia, serif; font-size: 16px; height: 36px; justify-content: center; width: 36px; }
+.accounts-section, .profile-section { padding-top: 37px; }
+.section-heading { align-items: flex-end; display: flex; justify-content: space-between; margin-bottom: 17px; }
+.section-heading .eyebrow { margin-bottom: 6px; }
+.section-heading h2 { font-size: 26px; }
+.account-count { color: var(--muted); font-size: 11px; }
+.account-list { border-top: 1px solid var(--line); }
+.account-row { align-items: center; border-bottom: 1px solid var(--line); display: grid; gap: 17px; grid-template-columns: 44px minmax(100px, 1fr) 150px 150px 170px; min-height: 104px; padding: 16px 10px; }
+.account-icon { align-items: center; background: var(--mint); border-radius: 50%; color: var(--forest); display: flex; font-size: 19px; height: 40px; justify-content: center; width: 40px; }
+.account-name h3 { font-size: 14px; margin: 0 0 5px; }
+.account-name p { color: var(--muted); font-size: 11px; margin: 0; }
+.account-balance strong { display: block; font-family: Georgia, serif; font-size: 20px; font-weight: 400; }
+.account-balance span, .account-details span, .account-number span, .profile-grid span { color: var(--muted); display: block; font-size: 10px; margin-bottom: 6px; }
+.account-details strong, .account-number strong { font-size: 12px; font-weight: 600; }
+.profile-section { border-top: 1px solid var(--line); margin-top: 26px; }
+.profile-grid { display: grid; gap: 15px; grid-template-columns: repeat(3, 1fr); }
+.profile-grid > div { background: #f1f6f2; border-left: 2px solid #a8cfb0; padding: 17px 18px; }
+.profile-grid strong { font-size: 12px; font-weight: 600; overflow-wrap: anywhere; }
+.demo-note { color: var(--muted); font-size: 11px; margin: 28px 0 0; }
+.footer { align-items: center; border-top: 1px solid var(--line); color: var(--muted); display: flex; font-size: 10px; justify-content: space-between; margin-top: auto; padding: 19px max(5vw, calc((100vw - 1180px) / 2)); }
+
+@keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 780px) {
+  .auth-layout { grid-template-columns: 1fr; margin: 24px auto 42px; max-width: 520px; }
+  .welcome-panel { min-height: 290px; padding: 31px 30px; }
+  .welcome-panel h1 { font-size: 36px; }
+  .welcome-copy { margin-top: 12px; max-width: 260px; }
+  .welcome-stamp { height: 88px; margin: 0; position: absolute; right: 34px; top: 105px; width: 88px; }
+  .welcome-stamp span { font-size: 7px; }
+  .welcome-stamp b { font-size: 18px; right: 1px; top: 0; }
+  .panel-footnote { margin-top: 25px; }
+  .form-panel { border: 1px solid var(--line); border-top: 0; padding: 35px 30px; }
+  .register-layout .welcome-panel { min-height: 270px; }
+  .register-layout .form-panel { padding: 31px 30px; }
+  .dashboard { margin-top: 33px; }
+  .dashboard-heading { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .dashboard-heading h1 { font-size: 31px; }
+  .account-row { grid-template-columns: 40px 1fr 110px; }
+  .account-details, .account-number { grid-column: 2 / span 2; }
+  .account-balance { grid-column: 3; grid-row: 1; text-align: right; }
+  .account-details { display: flex; gap: 10px; }
+  .account-details span { margin: 0; }
+  .account-number { display: flex; gap: 10px; }
+  .account-number span { margin: 0; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .footer { align-items: flex-start; flex-direction: column; gap: 7px; padding: 17px 24px; }
+}
+
+@media (max-width: 400px) {
+  .topbar { height: 66px; padding: 0 18px; }
+  .wordmark > span:last-child { font-size: 12px; }
+  .secure-note { font-size: 10px; }
+  .auth-layout { padding: 0 14px; }
+  .welcome-panel, .form-panel { padding-left: 23px; padding-right: 23px; }
+  .dashboard { padding: 0 18px; }
+  .account-row { gap: 10px; grid-template-columns: 36px 1fr 96px; padding-left: 0; padding-right: 0; }
+  .account-icon { height: 34px; width: 34px; }
+  .account-details, .account-number { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
